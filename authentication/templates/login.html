@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section id="login-modal"
+    class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+    <form method="post">
+        {% csrf_token %}
+        <div class="bg-[#161d25] p-6 sm:p-8 rounded-lg border border-[#313842] relative w-full max-w-[400px]">
+            <button id="close-modal"
+                class="absolute top-3 right-4 text-[#A5BBDC] hover:text-white text-2xl transition">&times;</button>
+
+            <h2 class="text-xl sm:text-2xl text-center mb-6 text-[#A5BBDC] font-semibold">Tizimga kirish</h2>
+
+            <div class="w-full flex bg-[#28313E] rounded mb-3 items-center px-3">
+                <span class="text-[#A5BBDC]"><i class="fa-solid fa-user"></i></span>
+                <input class="w-full h-[40px] bg-[#28313E] text-white pl-3 outline-none text-sm" type="text"
+                    placeholder="Login yoki email manzil" name="username" required>
+            </div>
+
+            <div class="w-full flex bg-[#28313E] rounded mb-5 items-center px-3">
+                <span class="text-[#A5BBDC]"><i class="fa-solid fa-key"></i></span>
+                <input class="w-full h-[40px] bg-[#28313E] text-white pl-3 outline-none text-sm" type="password"
+                    placeholder="Parol" name="password" required>
+            </div>
+            <div class="w-full">
+                <button type="submit"
+                    class="w-full h-[40px] text-[#fff] bg-[#638b34] hover:bg-[#4d6d28] rounded font-medium transition text-sm">Kirish</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('login-modal').style.display = 'flex';
+    });
+</script>
+
+{% endblock %}

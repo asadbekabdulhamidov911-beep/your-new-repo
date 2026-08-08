@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+    <div class="w-full font-sans bg-white">
+  
+        <div class="bg-[#f2f4f7] py-[6px]">
+            <div class="max-w-[1240px] mx-auto flex justify-between items-center px-[10px]">
+                
+                <div class="flex items-center gap-[24px]">
+                    <div class="flex items-center space-x-[24px] text-[14px] text-[#4b5563]">
+                        <button id="ochish" class="flex items-center text-[#111111] select-none">
+                            <i class="fa-solid fa-location-dot mr-[6px] text-[#111111]"></i>
+                            <span class="font-medium">Toshkent</span>
+                            <i class="fa-solid fa-chevron-down ml-[6px] text-[12px] text-[#111111]"></i>
+                        </button>
+                    </div>
+                    <a href="{% url 'topshirish_punkiti' %}">
+                        <div class="text-[13px] font-medium hover:text-black cursor-pointer hidden md:block">
+                            Topshirish punktlari
+                        </div>
+                    </a>
+                    <h3 class="text-[13px] font-medium text-[#90919A] md:hidden">yetkazib beriladigan shahar</h3>
+                </div>
+
+                <div id="shaharlar" class="hidden fixed inset-[0px] z-[50] flex items-center justify-center">
+                    <div id="orqafon" class="absolute inset-[0px] bg-black/40 backdrop-blur-[4px]"></div>
+                    <div class="relative bg-[#ffffff] w-full max-w-[540px] rounded-[12px] shadow-2xl overflow-hidden z-[10] mx-[16px]">
+                        <div class="p-[24px] pb-[16px] flex items-center justify-between">
+                            <h3 class="text-[22px] font-semibold text-[#111827]">Shaharni tanlang</h3>
+                            <button id="yopish" class="text-[#9ca3af] hover:text-[#4b5563] transition-colors text-[20px] p-[4px] focus:outline-none">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <div class="px-[24px] pb-[16px]">
+                            <div class="relative flex items-center">
+                                <i class="fa-solid fa-magnifying-glass absolute left-[16px] text-[#9ca3af] text-[14px]"></i>
+                                <input type="text" placeholder="Shaharni topish" class="w-full bg-[#f2f4f7] py-[12px] pl-[44px] pr-[16px] rounded-[12px] text-[16px] text-[#1f2937] placeholder-[#9ca3af] focus:outline-none border border-transparent focus:border-[#e5e7eb] transition-all">
+                            </div>
+                        </div>
+                        <div class="max-h-[350px] overflow-y-auto px-[8px] mb-[16px]">
+                            <button class="w-full flex items-center justify-between px-[16px] py-[14px] hover:bg-[#f9fafb] rounded-[8px] text-left text-[#1f2937] transition-colors group">
+                                <span class="text-[16px] font-normal">Abdukarim</span>
+                                <i class="fa-solid fa-chevron-right text-[#d1d5db] text-[12px] group-hover:text-[#9ca3af] transition-colors"></i>
+                            </button>
+                            <button class="w-full flex items-center justify-between px-[16px] py-[14px] hover:bg-[#f9fafb] rounded-[8px] text-left text-[#1f2937] transition-colors group">
+                                <span class="text-[16px] font-normal">Ahmad Yassaviy</span>
+                                <i class="fa-solid fa-chevron-right text-[#d1d5db] text-[12px] group-hover:text-[#9ca3af] transition-colors"></i>
+                            </button>
+                            <button class="w-full flex items-center justify-between px-[16px] py-[14px] hover:bg-[#f9fafb] rounded-[8px] text-left text-[#1f2937] transition-colors group">
+                                <span class="text-[16px] font-normal">Alaja</span>
+                                <i class="fa-solid fa-chevron-right text-[#d1d5db] text-[12px] group-hover:text-[#9ca3af] transition-colors"></i>
+                            </button>
+                            <button class="w-full flex items-center justify-between px-[16px] py-[14px] hover:bg-[#f9fafb] rounded-[8px] text-left text-[#1f2937] transition-colors group">
+                                <span class="text-[16px] font-normal">Alamli</span>
+                                <i class="fa-solid fa-chevron-right text-[#d1d5db] text-[12px] group-hover:text-[#9ca3af] transition-colors"></i>
+                            </button>
+                            <button class="w-full flex items-center justify-between px-[16px] py-[14px] hover:bg-[#f9fafb] rounded-[8px] text-left text-[#1f2937] transition-colors group">
+                                <span class="text-[16px] font-normal">Altinko'l (Qo'ng'irot tumani)</span>
+                                <i class="fa-solid fa-chevron-right text-[#d1d5db] text-[12px] group-hover:text-[#9ca3af] transition-colors"></i>
+                            </button>
+                            <button class="w-full flex items-center justify-between px-[16px] py-[14px] hover:bg-[#f9fafb] rounded-[8px] text-left text-[#1f2937] transition-colors group">
+                                <span class="text-[16px] font-normal">Andijon</span>
+                                <i class="fa-solid fa-chevron-right text-[#d1d5db] text-[12px] group-hover:text-[#9ca3af] transition-colors"></i>
+                            </button>
+                            <button class="w-full flex items-center justify-between px-[16px] py-[14px] hover:bg-[#f9fafb] rounded-[8px] text-left text-[#1f2937] transition-colors group">
+                                <span class="text-[16px] font-normal">Toshkent</span>
+                                <i class="fa-solid fa-chevron-right text-[#d1d5db] text-[12px] group-hover:text-[#9ca3af] transition-colors"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-[28px] text-[13px] text-[#62656a] font-medium hidden md:flex">
+                    <a href="{% url 'sotuvchi_bolish' %}" class="text-[#7000ff] hover:opacity-80">Sotuvchi bo‘lish</a>
+                    <a href="{% url 'sotuv' %}" class="text-[#7000ff] hover:opacity-80">Topshirish punktini ochish</a>
+                    <a href="#" class="hover:text-black">Savol-javob</a>
+                    <a href="#" class="hover:text-black">Buyurtmalarim</a>
+                    
+                    <div class="relative inline-block text-left p-[10px]">
+                        <button id="uzb" class="flex items-center pl-[5px] w-[117px] h-[32px] justify-center rounded-[6px]">
+                            <img class="w-[22px] h-[20px] rounded-[50px] mr-[7px]" src="https://as2.ftcdn.net/v2/jpg/08/17/59/19/1000_F_817591911_ufJgDxn20iIh9bIDodUqF6kbLW1ue4Re.jpg" alt="uz">
+                            <span class="text-gray-800 font-medium text-[14px]">O'zbekcha</span>
+                        </button>
+                        <div id="rus" class="hidden absolute justify-center left-[10px] w-[106px] bg-white rounded-[0px_0px_10px_10px] z-[20]">
+                            <a href="#" class="flex items-center h-[32px] justify-start pl-[5px] transition-colors">
+                                <img class="w-[22px] h-[15px] mr-[7px] rounded-[50px]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Russia.png/250px-Flag_of_Russia.png" alt="ru">
+                                <span class="text-gray-800 font-medium text-[14px]">Русский</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-[14px]">
+            <div class="max-w-[1240px] mx-auto flex items-center justify-between px-[16px] gap-[24px]">
+                
+                <div class="flex items-center gap-[10px] cursor-pointer flex-shrink-0 hidden md:flex">
+                    <a href="{% url 'home' %}"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Uzum-Market-Logo.png" alt="" class="w-[215px] h-[32px]"></a>
+                </div>
+
+                <button class="hidden md:flex items-center gap-[10px] bg-[#e5efff] text-[#337fff] px-[20px] py-[11px] rounded-[8px] font-semibold text-[14px] hover:bg-[#d5e5ff] transition flex-shrink-0">
+                    <span id="catalogBtn">Katalog</span>
+                </button>
+                
+                <div class="flex flex-1 items-center border-[1px] border-[rgba(0,0,0,0.1)] rounded-[8px] overflow-hidden">
+                    <input type="text" placeholder="Mahsulotlar va turkumlar izlash" class="w-full bg-white px-[18px] py-[11px] text-[14px] text-black outline-none placeholder-[#a0a5ac]">
+                    <button class="bg-[#f2f4f7] px-[26px] py-[11px] text-[#62656a] hover:bg-[#e4e6ea] flex items-center justify-center border-l-[1px] border-[rgba(0,0,0,0.05)]">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-[28px] text-[14px] font-medium text-[#1f2021] flex-shrink-0 hidden md:flex">
+                    <div class="flex items-center gap-[8px] cursor-pointer hover:text-[#7000ff]">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Kirish</span>
+                    </div>
+                    <div class="flex items-center gap-[8px] cursor-pointer hover:text-[#7000ff]">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>Saralangan</span>
+                    </div>
+                    <div class="flex items-center gap-[8px] cursor-pointer hover:text-[#7000ff]">
+                        <i class="fa-solid fa-cart-arrow-down"></i>
+                        <span>Savat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-[6px] border-b-[1px] border-[#e4e6ea] hidden md:flex">
+            <div class="max-w-[1240px] mx-auto flex items-center justify-between px-[16px] text-[14px] text-[#62656a]">
+                
+                <div class="flex items-center gap-[22px] flex-wrap font-medium">
+                    {% for kategoriya in kategoriyalar|slice:":8" %}
+                    <a href="{% url 'kategoriya' kategoriya.slug %}" class="flex items-center gap-[6px] text-black hover:text-[#7000ff] no-underline">
+                        {% if kategoriya.rasmi %}
+                        <img src="{{ kategoriya.rasmi.url }}" alt="" width="24" height="24">
+                        {% endif %}
+                        <span>{{ kategoriya.nomi }}</span>
+                    </a>
+                    {% endfor %}
+                    
+                    <div class="flex items-center gap-[4px] font-medium cursor-pointer text-[#62656a] hover:text-black ml-[10px] flex-shrink-0">
+                        <span>Yana <i class="fa-solid fa-chevron-down"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div id="catalogContent" class="hidden flex w-[1200px] mx-auto my-0">
+            <div class="w-[330px] py-[12px] font-sans border-r border-[#f2f2f2]">
+                {% for kategoriya in kategoriyalar %}
+                <a href="{% url 'kategoriya' kategoriya.slug %}" class="block no-underline">
+                    <div class="flex items-center justify-between px-[16px] py-[10px] cursor-pointer hover:bg-[#f5f5f5] transition">
+                        <div class="flex items-center gap-[12px]">
+                            {% if kategoriya.rasmi %}
+                            <span class="w-[32px] h-[32px]">
+                                <img src="{{ kategoriya.rasmi.url }}" alt="{{ kategoriya.nomi }}" class="w-full h-full object-cover rounded">
+                            </span>
+                            {% endif %}
+                            <span class="text-[16px] text-[#1f2026] font-medium">{{ kategoriya.nomi }}</span>
+                        </div>
+                        <span class="text-[12px] text-[#a6a7b3] font-normal">❯</span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+
+            <div class="p-[24px]">
+                {% if kategoriyalar.first %}
+                <h2 class="text-[18px] font-bold text-[#1f2026] mb-[20px] flex items-center gap-[4px] cursor-pointer hover:text-[#7000ff]">
+                    {{ kategoriyalar.first.nomi }}
+                    <span class="text-[14px] text-[#a6a7b3] font-normal hover:text-[#1f2026]">❯</span>
+                </h2>
+                {% endif %}
+
+                <div class="grid grid-cols-4 gap-x-[32px] gap-y-[24px]">
+                    <div>
+                        <h3 class="text-[16px] font-bold text-[#1f2026] mb-[10px] cursor-pointer hover:text-[#9CB4FF]">
+                            Karavot va matraslar
+                        </h3>
+                        <ul class="space-y-[8px] mb-[24px]">
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Matraslar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Karavotlar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Yotoqxona uchun mebel to'plamlari</li>
+                        </ul>
+
+                        <h3 class="text-[16px] font-bold text-[#1f2026] mb-[10px] cursor-pointer hover:text-[#9CB4FF]">
+                            Oshxona mebellari
+                        </h3>
+                        <ul class="space-y-[8px] mb-[24px]">
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Oshxona burchaklari</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Oshxona garniturasi</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Oshxona modullari</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Oshxona xontaxtalari</li>
+                        </ul>
+
+                        <h3 class="text-[16px] font-bold text-[#1f2026] mb-[10px] cursor-pointer hover:text-[#9CB4FF]">
+                            Vannaxona uchun mebel
+                        </h3>
+                        <ul class="space-y-[8px]">
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Rakovina uchun tumbalar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Vannaxona uchun mebel to'plamlari</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Vannaxona uchun shkaflar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Vannaxona uchun penallar</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[16px] font-bold text-[#1f2026] mb-[10px] cursor-pointer hover:text-[#9CB4FF]">
+                            Mebel uchun furnitura va butlovchi qismlar
+                        </h3>
+                        <ul class="space-y-[8px] mb-[24px]">
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Mebel uchun butlovchi qismlar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Mebel uchun furnitura</li>
+                        </ul>
+
+                        <h3 class="text-[16px] font-bold text-[#1f2026] mb-[10px] cursor-pointer hover:text-[#9CB4FF]">
+                            Saqlash mebellari
+                        </h3>
+                        <ul class="space-y-[8px] mb-[24px]">
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Komodlar va tumbalar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Tokcha va javonlar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Qavatli ilgichlar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Shkaflar va garderoblar</li>
+                        </ul>
+
+                        <h3 class="text-[16px] font-bold text-[#1f2026] mb-[10px] cursor-pointer hover:text-[#9CB4FF]">
+                            Yumshoq mebel
+                        </h3>
+                        <ul class="space-y-[8px]">
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Pufiklar va banketkalar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Divanlar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Kreslolar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Yumshoq mebel to'plamlari</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[16px] font-bold text-[#1f2026] mb-[10px] cursor-pointer hover:text-[#9CB4FF]">
+                            Ofis va kompyuter mebellari
+                        </h3>
+                        <ul class="space-y-[8px] mb-[24px]">
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Ofis kreslolari</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Geymerlar uchun kreslolari</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Seyflar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Partalar</li>
+                        </ul>
+                        <div class="text-[13px] text-[#4d4f5e] cursor-pointer flex items-center gap-[5px] mb-[25px] hover:text-[#9CB4FF]">
+                            Yana 3 <span><img width="16" height="16" src="https://img.icons8.com/ios-filled/50/4d4f5e/expand-arrow--v1.png" alt="expand-arrow--v1"/></span>
+                        </div>
+
+                        <h3 class="text-[16px] font-bold text-[#1f2026] mb-[10px] cursor-pointer hover:text-[#9CB4FF]">
+                            Stollar va stullar
+                        </h3>
+                        <ul class="space-y-[8px]">
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Stullar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Jurnal stollari</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Stollar</li>
+                            <li class="text-[14px] text-[#4d4f5e] cursor-pointer hover:text-[#9CB4FF]">Ovqatlanish guruhlari</li>
+                        </ul>
+                        <div class="text-[13px] text-[#4d4f53] cursor-pointer flex items-center gap-[4px] mt-[8px] hover:text-[#9CB4FF]">
+                            Yana 2 <span><img width="16" height="16" src="https://img.icons8.com/ios-filled/50/4d4f5e/expand-arrow--v1.png" alt="expand-arrow--v1"/></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const catalogBtn = document.getElementById('catalogBtn');
+            const catalogContent = document.getElementById('catalogContent');
+            
+            if (catalogBtn && catalogContent) {
+                catalogBtn.addEventListener('click', function() {
+                    catalogContent.classList.toggle('hidden');
+                });
+            }
+
+            const ochish = document.getElementById('ochish');
+            const yopish = document.getElementById('yopish');
+            const shaharlar = document.getElementById('shaharlar');
+            const orqafon = document.getElementById('orqafon');
+
+            if (ochish && yopish && shaharlar && orqafon) {
+                ochish.addEventListener('click', function() {
+                    shaharlar.classList.remove('hidden');
+                });
+
+                yopish.addEventListener('click', function() {
+                    shaharlar.classList.add('hidden');
+                });
+
+                orqafon.addEventListener('click', function() {
+                    shaharlar.classList.add('hidden');
+                });
+            }
+
+            const uzb = document.getElementById('uzb');
+            const rus = document.getElementById('rus');
+
+            if (uzb && rus) {
+                uzb.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    rus.classList.toggle('hidden');
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!rus.contains(e.target) && !uzb.contains(e.target)) {
+                        rus.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
