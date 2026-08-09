@@ -6,5 +6,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("Uzum.urls")),
     path("auth/", include("authentication.urls")),
-    path('webhook/', main.webhook, name='webhook'), 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
