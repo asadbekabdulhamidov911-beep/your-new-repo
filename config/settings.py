@@ -125,3 +125,7 @@ if os.environ.get('RAILWAY_URL'):
         print("✅ Webhook o'rnatildi")
     except Exception as e:
         print(f"⚠️ Webhook xatosi: {e}")
+
+    
+import os
+PORT = os.environ.get('PORT', 8000)
