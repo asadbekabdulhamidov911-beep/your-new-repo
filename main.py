@@ -1,16 +1,25 @@
+# main.py - loyiha ildizida
 import os
 import django
 import telebot
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 
+# Django sozlamalarini yuklash
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 django.setup()
 
+# Django modellarini import qilish
 from django.contrib.auth.models import User
-from authentication.models import TelegramUser
+from Uzum.models import TelegramUser
 
+# Bot tokeni
 BOT_TOKEN = "8808790681:AAHcWMFbwLfuVTQ4N6QI8Tv7DpRHnJDcFjs"
 bot = telebot.TeleBot(BOT_TOKEN)
+
+# ============ SIZNING BOT KODINGIZ (O'ZGARMAGAN) ============
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
@@ -32,5 +41,40 @@ def show_all_users(message):
     
     bot.send_message(message.chat.id, text)
 
+# ============ FAQAT WEBHOOK QISMI QO'SHILDI ============
+
+@csrf_exempt
+def webhook(request):
+    """Telegram webhook endpoint"""
+    if request.method == 'POST':
+        try:
+            json_str = request.body.decode('UTF-8')
+            update = telebot.types.Update.de_json(json_str)
+            bot.process_new_updates([update])
+            return JsonResponse({'status': 'ok'})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+    return JsonResponse({'status': 'method not allowed'}, status=405)
+
+# ============ WEBHOOK O'RNATISH (FAQAT RAILWAY'DA) ============
+
+def set_webhook():
+    """Webhook ni o'rnatish"""
+    try:
+        bot.remove_webhook()
+        railway_url = os.environ.get('RAILWAY_URL')
+        if railway_url:
+            webhook_url = f"{railway_url}/webhook/"
+            bot.set_webhook(url=webhook_url)
+            print(f"✅ Webhook o'rnatildi: {webhook_url}")
+            return True
+        return False
+    except Exception as e:
+        print(f"❌ Webhook xatosi: {e}")
+        return False
+
+# ============ LOCAL DA ISHGA TUSHIRISH (O'ZGARMAGAN) ============
+
 if __name__ == '__main__':
+    # Local da polling ishlatiladi
     bot.polling(none_stop=True)

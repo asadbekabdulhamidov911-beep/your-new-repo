@@ -115,3 +115,13 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# config/settings.py - eng oxiriga qo'shing
+
+# Webhook o'rnatish (faqat Railway'da)
+if os.environ.get('RAILWAY_URL'):
+    try:
+        import main
+        main.set_webhook()
+        print("✅ Webhook o'rnatildi")
+    except Exception as e:
+        print(f"⚠️ Webhook xatosi: {e}")
